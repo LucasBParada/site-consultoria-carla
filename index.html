@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Carla Barros | Consultoria de Treino Digital</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+:root{
+    --preto: #0b0b0c;
+    --cinza-escuro: #131316;
+    --cinza-card: #1c1c21;
+    --cinza-claro: #9ca3af;
+    --branco: #ffffff;
+    --sotaque: #ff451a; /* Laranja de alta performance */
+    --sotaque-gradient: linear-gradient(135deg, #ff6b4a 0%, #ff451a 100%);
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background: var(--preto);
+    color: var(--branco);
+    overflow-x: hidden;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
+
+section{
+    padding:100px 0;
+}
+
+.titulo{
+    font-family: 'Montserrat', sans-serif;
+    text-align:center;
+    font-size:2.5rem;
+    font-weight: 800;
+    margin-bottom:60px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    position: relative;
+}
+
+.titulo::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 4px;
+    background: var(--sotaque);
+    border-radius: 2px;
+}
+
+p{
+    line-height:1.8;
+    color: #cbd5e1;
+    font-size: 1.05rem;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background: linear-gradient(180deg, rgba(11,11,12,0.75) 0%, rgba(11,11,12,0.98) 100%), 
+                url('https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1920&auto=format&fit=crop') no-repeat center center/cover;
+    padding: 40px 0;
+}
+
+.hero h1{
+    font-family: 'Montserrat', sans-serif;
+    font-size:5.5rem;
+    font-weight: 900;
+    letter-spacing:2px;
+    margin-bottom:5px;
+    background: linear-gradient(180deg, #ffffff 40%, #a3a3a3 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero h2{
+    font-family: 'Montserrat', sans-serif;
+    color: var(--sotaque);
+    font-weight:700;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom:30px;
+}
+
+.hero p{
+    max-width:700px;
+    margin:auto;
+    color:#e4e4e7;
+    font-size: 1.15rem;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:40px;
+    padding:18px 45px;
+    background: var(--sotaque-gradient);
+    color: var(--branco);
+    text-decoration:none;
+    font-weight:700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+    border-radius: 50px;
+    transition: all .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 25px rgba(255, 69, 26, 0.3);
+}
+
+.btn:hover{
+    transform:translateY(-4px);
+    box-shadow: 0 15px 30px rgba(255, 69, 26, 0.5);
+}
+
+/* CONSULTORIA */
+
+.sobre{
+    max-width:800px;
+    margin:auto;
+    text-align:center;
+}
+
+.sobre p {
+    font-size: 1.15rem;
+}
+
+/* BENEFICIOS */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+}
+
+.card{
+    background: var(--cinza-card);
+    padding:40px 30px;
+    border-radius:16px;
+    border: 1px solid rgba(255,255,255,0.03);
+    transition: all .3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 0;
+    background: var(--sotaque);
+    transition: height 0.3s ease;
+}
+
+.card:hover{
+    transform:translateY(-7px);
+    border-color: rgba(255, 69, 26, 0.2);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.card:hover::before {
+    height: 100%;
+}
+
+.card h3{
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom:15px;
+    color: var(--branco);
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.card p{
+    color: #94a3b8;
+    font-size: 1rem;
+}
+
+/* GALERIA */
+
+.galeria{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+}
+
+.galeria-item{
+    background: var(--cinza-escuro);
+    border-radius:16px;
+    overflow:hidden;
+    border: 1px solid rgba(255,255,255,0.03);
+    transition: transform 0.3s ease;
+}
+
+.galeria-item:hover {
+    transform: translateY(-5px);
+}
+
+.galeria-item .img-container {
+    width: 100%;
+    height: 380px;
+    overflow: hidden;
+    position: relative;
+}
+
+.galeria-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition: transform 0.5s ease;
+}
+
+/* Move o enquadramento interno da imagem 2 para baixo (ajuste a porcentagem se precisar de mais ou menos) */
+.galeria-item img.img-posicionada {
+    object-position: center 10%; 
+}
+
+.galeria-item:hover img {
+    transform: scale(1.06);
+}
+
+.galeria-item h3{
+    font-family: 'Montserrat', sans-serif;
+    padding:25px 20px;
+    text-align:center;
+    font-size: 1.15rem;
+    font-weight: 700;
+    background: var(--cinza-card);
+}
+
+/* SOBRE INSTRUTORA */
+
+.instrutora{
+    background: var(--cinza-escuro);
+    position: relative;
+}
+
+.instrutora .sobre{
+    max-width:850px;
+}
+
+.destaque{
+    color: var(--branco);
+    font-weight:700;
+    display: block;
+    font-size: 1.25rem;
+    margin: 15px 0;
+    padding: 15px;
+    border-left: 3px solid var(--sotaque);
+    background: rgba(255, 65, 26, 0.05);
+    text-align: left;
+}
+
+/* CTA */
+
+.cta{
+    text-align:center;
+}
+
+.cta-box{
+    background: linear-gradient(135deg, #131316 0%, #1c1c21 100%);
+    padding:80px 40px;
+    border-radius:24px;
+    border: 1px solid rgba(255, 255, 255, 0.02);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+}
+
+.cta .titulo {
+    margin-bottom: 20px;
+}
+
+.cta p{
+    max-width:650px;
+    margin:0 auto 20px auto;
+    font-size: 1.15rem;
+}
+
+.cta-contatos {
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.cta-contato-link {
+    color: var(--cinza-claro);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.cta-contato-link:hover {
+    color: var(--sotaque);
+}
+
+/* FOOTER */
+
+footer{
+    padding:40px;
+    text-align:center;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    color: #64748b;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:768px){
+
+.hero{
+    align-items: center;
+}
+
+.hero h1{
+    font-size:3.2rem;
+    line-height: 1.1;
+}
+
+.hero h2{
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+}
+
+.titulo{
+    font-size:2rem;
+}
+
+.galeria-item .img-container{
+    height:300px;
+}
+
+.cta-box{
+    padding:60px 20px;
+}
+
+.destaque {
+    font-size: 1.1rem;
+}
+
+.cta-contatos {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<header class="hero">
+
+    <div class="container">
+
+        <h1>CARLA BARROS</h1>
+
+        <h2>Consultoria de Treino Digital</h2>
+
+        <p>
+            Transforme sua rotina através de um acompanhamento
+            profissional, metodologia personalizada e estratégias
+            focadas em performance, saúde e evolução física.
+        </p>
+
+        <a href="#contato" class="btn">
+            Começar Agora
+        </a>
+
+    </div>
+
+</header>
+
+<section>
+
+    <div class="container">
+
+        <h2 class="titulo">
+            Consultoria Online Personalizada
+        </h2>
+
+        <div class="sobre">
+
+            <p>
+                A Consultoria Digital Carla Barros foi desenvolvida para
+                pessoas que desejam alcançar resultados reais através de
+                um planejamento estruturado e acompanhamento contínuo.
+            </p>
+
+            <br>
+
+            <p>
+                Cada programa é elaborado considerando objetivos,
+                experiência, rotina, disponibilidade e necessidades
+                individuais, garantindo uma evolução consistente,
+                segura e sustentável.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section>
+
+    <div class="container">
+
+        <h2 class="titulo">
+            O Que Você Recebe
+        </h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Acompanhamento Digital</h3>
+                <p>
+                    Monitoramento contínuo da evolução com ajustes
+                    estratégicos sempre que necessário.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Treinos Direcionados</h3>
+                <p>
+                    Protocolos personalizados para emagrecimento,
+                    hipertrofia, condicionamento físico e performance.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Suporte para Dúvidas</h3>
+                <p>
+                    Canal de comunicação dedicado para orientação
+                    e esclarecimento de dúvidas.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Análise de Evolução</h3>
+                <p>
+                    Avaliação periódica dos resultados e planejamento
+                    de novos objetivos.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Treinamento Estratégico</h3>
+                <p>
+                    Métodos modernos voltados para resultados
+                    consistentes e de longo prazo.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Alta Performance</h3>
+                <p>
+                    Planejamento inspirado em preparação física
+                    competitiva e condicionamento avançado.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section>
+
+    <div class="container">
+
+        <h2 class="titulo">
+            Treinamento e Performance
+        </h2>
+
+        <div class="galeria">
+
+            <div class="galeria-item">
+                <div class="img-container">
+                    <img src="imgs/1.jpeg" alt="Condicionamento Físico Militar">
+                </div>
+                <h3>Condicionamento Físico Militar</h3>
+            </div>
+
+            <div class="galeria-item">
+                <div class="img-container">
+                    <img src="imgs/2.jpeg" class="img-posicionada" alt="Treinamento de Alta Performance">
+                </div>
+                <h3>Treinamento de Alta Performance</h3>
+            </div>
+
+            <div class="galeria-item">
+                <div class="img-container">
+                    <img src="imgs/3.jpeg" alt="Preparação Física Competitiva">
+                </div>
+                <h3>Preparação Física Competitiva</h3>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="instrutora">
+
+    <div class="container">
+
+        <h2 class="titulo">
+            Sobre a Instrutora
+        </h2>
+
+        <div class="sobre">
+
+            <p>
+                Carla Barros atua no desenvolvimento físico e na preparação
+                de alunos que buscam evolução corporal, condicionamento
+                físico e melhoria da qualidade de vida através de uma
+                metodologia baseada em disciplina, estratégia e resultados.
+            </p>
+
+            <br>
+
+            <p>
+                Sua experiência reúne conhecimentos voltados para
+                treinamento de performance, preparação física e
+                acompanhamento personalizado.
+            </p>
+
+            <span class="destaque">
+                Campeã do Campeonato de Fisiculturismo de Osasco,
+                realizado pela FBBF,
+            </span>
+
+            <p>
+                destacando-se por sua dedicação ao esporte e ao
+                desenvolvimento contínuo de atletas e praticantes.
+            </p>
+
+            <br>
+
+            <p>
+                A metodologia aplicada combina treinamento inteligente,
+                acompanhamento individualizado e estratégias voltadas
+                para maximizar o potencial físico de cada aluno.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section id="contato" class="cta">
+
+    <div class="container">
+
+        <div class="cta-box">
+
+            <h2 class="titulo">
+                Alcance Seu Próximo Nível
+            </h2>
+
+            <p>
+                Inicie sua jornada com acompanhamento profissional,
+                treinamento personalizado e suporte contínuo para
+                conquistar seus objetivos.
+            </p>
+
+            <a href="https://wa.me/5513997996373" class="btn">
+                Solicitar Avaliação Inicial
+            </a>
+
+            <div class="cta-contatos">
+                <a href="mailto:carlapereiradebarros@gmail.com" class="cta-contato-link">
+                    ✉ carlapereiradebarros@gmail.com
+                </a>
+                <a href="tel:13997996373" class="cta-contato-link">
+                    📞 (13) 99799-6373
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+    © 2026 Carla Barros • Consultoria de Treino Digital
+</footer>
+
+</body>
+</html>
