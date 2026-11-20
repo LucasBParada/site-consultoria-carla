@@ -86,23 +86,34 @@
         .hero {
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: linear-gradient(180deg, rgba(11, 11, 12, 0.75) 0%, rgba(11, 11, 12, 0.98) 100%),
-                url('https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1920&auto=format&fit=crop') no-repeat center center/cover;
-            padding: 40px 0;
+            background: #000;
+            padding: 0 0 80px 0;
         }
 
+        /* Banner no topo do header */
+        .hero-banner {
+            display: block;
+            width: 100%;
+            max-width: 1500px;
+            height: auto;
+            margin: 0 auto 10px auto;
+            /* Degradê que funde a parte de baixo do banner com o fundo */
+            -webkit-mask-image: linear-gradient(180deg, #000 70%, transparent 100%);
+            mask-image: linear-gradient(180deg, #000 70%, transparent 100%);
+        }
+
+        /* h1 invisível na tela (SEO / acessibilidade), pois o banner já mostra o nome */
         .hero h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 5.5rem;
-            font-weight: 900;
-            letter-spacing: 2px;
-            margin-bottom: 5px;
-            background: linear-gradient(180deg, #ffffff 40%, #a3a3a3 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            white-space: nowrap;
         }
 
         .hero h2 {
@@ -234,29 +245,33 @@
             position: relative;
         }
 
+        /* Imagens com realce leve de nitidez e sem zoom fixo (evita borrão) */
         .galeria-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center center;
+            display: block;
+            filter: contrast(1.06) saturate(1.05) brightness(1.02);
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            transform: translateZ(0);
             transition: transform 0.5s ease;
         }
 
+        /* Enquadramento da imagem 3 (sem scale, para não perder qualidade) */
         .galeria-item .img-container img.img-centralizada {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
             object-position: center 20%;
-            transform: scale(1.15);
-            transition: transform 0.5s ease;
         }
 
-        /* Move o enquadramento interno da imagem 2 para baixo (ajuste a porcentagem se precisar de mais ou menos) */
+        /* Enquadramento da imagem 2 (ajuste a porcentagem se precisar de mais ou menos) */
         .galeria-item img.img-posicionada {
             object-position: center 10%;
         }
 
-        .galeria-item:hover .img-container img.img-centralizada {
-            transform: scale(1.20);
+        /* Zoom suave no hover */
+        .galeria-item:hover img {
+            transform: translateZ(0) scale(1.05);
         }
 
         .galeria-item h3 {
@@ -353,12 +368,9 @@
         @media(max-width:768px) {
 
             .hero {
-                align-items: center;
-            }
-
-            .hero h1 {
-                font-size: 3.2rem;
-                line-height: 1.1;
+                min-height: auto;
+                justify-content: flex-start;
+                padding-bottom: 60px;
             }
 
             .hero h2 {
@@ -395,6 +407,8 @@
 <body>
 
     <header class="hero">
+
+        <img src="imgs/banner.png" class="hero-banner" alt="Prime Coaching - Carla Barros">
 
         <div class="container">
 
@@ -523,21 +537,23 @@
 
                 <div class="galeria-item">
                     <div class="img-container">
-                        <img src="imgs/1.jpeg" alt="Condicionamento Físico Militar">
+                        <img src="imgs/1.jpeg" alt="Condicionamento Físico Militar" loading="lazy" decoding="async">
                     </div>
                     <h3>Condicionamento Físico Militar</h3>
                 </div>
 
                 <div class="galeria-item">
                     <div class="img-container">
-                        <img src="imgs/2.jpeg" class="img-posicionada" alt="Treinamento de Alta Performance">
+                        <img src="imgs/2.jpeg" class="img-posicionada" alt="Treinamento de Alta Performance"
+                            loading="lazy" decoding="async">
                     </div>
                     <h3>Treinamento de Alta Performance</h3>
                 </div>
 
                 <div class="galeria-item">
                     <div class="img-container">
-                        <img src="imgs/3.jpeg" class="img-centralizada" alt="Preparação Física Competitiva">
+                        <img src="imgs/3.jpeg" class="img-centralizada" alt="Preparação Física Competitiva"
+                            loading="lazy" decoding="async">
                     </div>
                     <h3>Preparação Física Competitiva</h3>
                 </div>
@@ -571,6 +587,17 @@
                     Sua experiência reúne conhecimentos voltados para
                     treinamento de performance, preparação física e
                     acompanhamento personalizado.
+                </p>
+
+                <span class="destaque">
+                    Pós-graduada em Condicionamento Físico e Musculação
+                    pela Universidade Faveni,
+                </span>
+
+                <p>
+                    com cursos especializados na área de musculação, o que
+                    garante uma base técnica sólida e atualizada para
+                    planejar treinos seguros, eficientes e individualizados.
                 </p>
 
                 <span class="destaque">
@@ -613,7 +640,7 @@
                     conquistar seus objetivos.
                 </p>
 
-                <a href="https://wa.me/5513997996373" class="btn">
+                <a href="https://wa.me/5513997996351" class="btn">
                     Solicitar Avaliação Inicial
                 </a>
 
@@ -621,8 +648,8 @@
                     <a href="mailto:carlapereiradebarros@gmail.com" class="cta-contato-link">
                         ✉ carlapereiradebarros@gmail.com
                     </a>
-                    <a href="tel:13997996373" class="cta-contato-link">
-                        📞 (13) 99799-6373
+                    <a href="tel:13997996351" class="cta-contato-link">
+                        📞 (13) 99799-6351
                     </a>
                 </div>
 
